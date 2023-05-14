@@ -42,10 +42,18 @@ public class MyHashTable<K, V> {
         node = new HashNode<>(key, value);
         node.next = chainArray[index];
         chainArray[index] = node;
-        size++
+        size++;
     }
     public V get(K key){
-
+        int index = hash(key);
+        HashNode<K,V> node = chainArray[index];
+        while (node != null) {
+            if (node.key.equals(key)) {
+                return node.value;
+            }
+            node = node.next;
+        }
+        return null;
     }
     public V remove(K key){
 
