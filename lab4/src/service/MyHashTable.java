@@ -87,7 +87,16 @@ public class MyHashTable<K, V> {
         return false;
     }
     public K getKey(V value){
-
+        for (int i = 0; i < M; i++) {
+            HashNode<K,V> node = chainArray[i];
+            while (node != null) {
+                if (node.value.equals(value)) {
+                    return node.key;
+                }
+                node = node.next;
+            }
+        }
+        return null;
     }
 
 }
